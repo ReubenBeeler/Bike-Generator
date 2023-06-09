@@ -10,7 +10,7 @@ This repository is a collection of primarily 3D-model files for our UCSB Physics
 The first detail to note about this project is that there are a few crucial, pre-existing components in this design which we had to work around, namely a permanent magnet, a USB charging cable, and a [type] bike. The design of our circuitry and 3D-printed parts had to meet the specifications and sizes of each of these components, so naturally this manual is segmented into 3 chapters. (Note that such objects come in a variety of flavors, so it is likely that slight modifications need to be made to fit your exact needs).
 
 ## 1. Generator
-At the heart of this project lies the generator itself, which consists of a magnet and a coil that move relative to each other. In order to construct a successful generator, one should know the appropriate optimizations and constraints of electromagnetic generation. To this end, it is important to understand the physical laws which govern electromagnetic generation; here is a brief overview.
+At the heart of this project lies the generator itself, which consists of a magnet and a coil that move relative to each other. There are lots of moving parts to consider, so in order to construct a successful generator, one should know the appropriate optimizations and constraints of electromagnetic generation. To this end, it is important to understand the physical laws which govern such phenomena; below is a brief overview.
 
 ### The Physics
 
@@ -18,31 +18,64 @@ Permanent magnets have a permanent magnetic field. For a cylindrical magnet pola
 
 ![cylindrical_magnet_field_lines](https://github.com/ReubenBeeler/Bike-Generator/assets/45247193/d847dcae-2f62-47c0-b2b1-07a8fd6e49c4)
 
-If you were to spin the magnet along its cylindrical axis, the magnetic field in 3D space would be unchanged since that axis is the axis of symmetry. If, however, you were to spin the magnet on another axis, the direction and magnitude of the field at a particular point would change as a function of time. If, perchance, this changing magnetic field penetrates a conducting material or loop of wire, the conductor will experience an induced current characterized by Faraday's Law (equation below).
+If you were to spin the magnet along its cylindrical axis, the magnetic field in 3D space would be unchanged since that axis is the axis of symmetry. If, however, you were to spin the magnet on another axis, the direction and magnitude of the field at a particular point would change as a function of time. If, perchance, this changing magnetic field penetrates a conducting material or loop of wire, the conductor will experience an induced emf characterized by Faraday's Law (equation below).
+
 
 ![faraday's law](https://github.com/ReubenBeeler/Bike-Generator/assets/45247193/d965ffeb-f51c-444d-aed5-78e9c1d4f25a)
 
-We see that the induced voltage (![emf](https://github.com/ReubenBeeler/Bike-Generator/assets/45247193/6ecdb1dc-2a35-4f56-85a4-5c4d269e2d51)) in the conductor is linear to the change in magnetic flux (![magnetic flux](https://github.com/ReubenBeeler/Bike-Generator/assets/45247193/41bcfaa0-aa57-4571-b8d7-55332b00086f)) with respect to time, where magnetic flux is the flux of the magnetic field through an area enclosed by a conductor. Our conductor in question is a coil, which is best approximated as an ideal solenoid. Increasing the number of windings of the solenoid quadratically increases the absolute value of magnetic flux (and its time derivative) which increases the absolute value of the induced emf. In general, more wrapped wire provides more electrical generation; this is the first optimization to consider.
+We see that the induced voltage (![emf](https://github.com/ReubenBeeler/Bike-Generator/assets/45247193/6ecdb1dc-2a35-4f56-85a4-5c4d269e2d51)) in the conductor is linear to the change in magnetic flux (![magnetic flux](https://github.com/ReubenBeeler/Bike-Generator/assets/45247193/41bcfaa0-aa57-4571-b8d7-55332b00086f)) with respect to time. So, a spinning magnet near a coil/solenoid induces a voltage which drives current through a circuit, thus powering some electronic device. Before we build anything, realize that there are several things to consider and optimizations to be made!
 
-More loops, more emf but also more resistance. Emf and resistance are linear with number of loops.
-As many loops as possible to make resistance of load negligible so current approaches emf/R_ind.
-Although we want fewer loops since more loops make it difficult to turn and voltage regulator wastes excess voltage anyway.
+### Optimizations
 
-Our specific magnet is an N52, which is the strongest variety of neod
+#### Magnet Shape and Strength
+Our specific magnet is an N52, which is the strongest variety of neod TODO finish up this and mention spherical magnets and how they are still polarized along axis but fill the spherical rotation space better.
 
-TODO
+#### Magnet-Cylinder Orientation
+The first optimization we make is maximizing the emf by orienting the magnet and coil such that the magnet or coil rotates around an axis which is perpendicular to both the cylindrical magnet's axis _and_ the axis of the solenoid. Here is a visual supplement to thwart confusion:
 
+TODO ADD PHOTO OF MAGNET AXIS ALIGNED WITH CYLINDER AXIS, PERPENDICULAR ROTATION AXIS
 
-To avoid the difficulty of wire brushes, the coil is kept stationary relative to the bike while the permanent magnet rotates inside the coil. Keeping the magnet inside of the cylinder is important for maintaining ... Below is [_a visual compliment_](## "an image") of the described setup.
+TODO Explain above image
 
+#### Proximity of Cylinder
+Where in the magnetic field diagram is our cylinder? The magnetic field strength is characterized by the density of magnetic field lines TODO
+
+#### Rotor and Stator
+What spins and what doesn't? An electromagnetic generator simply requires a magnet to move relative to a coil. In the user's reference frame, the magnet could spin or the coil could spin (or both!). To optimize for simplicity (to avoid the difficulty of wire brushes), the coil is kept stationary relative to the bike while the permanent magnet rotates inside the coil. To maintain this rotation, we should encapsulate the magnet in some sort of contain which we can rotate inside of the cylinder. To understand what that might look like for our cylindrical magnet, observe the following 3D model of the magnet, a "magnet holder", and the cylinder around which a coil would be wrapped.
+
+TODO image of cylinder + rotor
+
+TODO Explain above image more
+
+#### Angular Frequency
+How fast do (should) we spin the magnet? If the magnet is spinning with some constant angular velocity, the magnetic flux would look like
+
+TODO add equation: PHI = PHI_0 sin(OMEGA * t)
+
+where _TODO PHI_0_ is a constant depending on the geometry of the magnet and coil. Using Faraday's Law, we find that
+
+TODO add equation: EMF = OMEGA * PHI_0 sin(OMEGA * t)
+
+. So, increasing angular frequency of the magnet increases the induced emf, which pushes more current across the load. This is what we desire, yet it is important to note that operating at too high frequencies increases friction between the rotating and stationary parts of the build. This implies the existence of an optimal frequency, yet the constraint of a human turning the magnet with only mild gear reduction makes this optimal frequency beyond reach; an oscillatory frequency of about 5-10Hz is sufficient as we'll see later.
+
+#### Number of Wire Windings
+Consider a solenoid with a variable number of windings. Increasing the number of windings of the solenoid quadratically increases the absolute value of magnetic flux (and its time derivative), thus increasing the absolute value of the induced emf. In general, more wrapped wire provides more electrical generation. However, realistic wires have some resistance! Having an inductor with an enormous amount of wire (relative to the impedance of the load) would be counterproductive since most of the energy would be dissipated by the inductor's resistance. So, there must be some optimal amount of wire to use in the inductor. Unfortunately, due to the complicated nature of the various dissipative forces, it is difficult to predict what exactly that optimum is.
+
+#### Wire Size
+Which size of wire should you pick for the coil? We chose a 30 AWG copper wire... TODO complete this Knowing that we use copper wire, spin the magnet with a frequency
+
+#### Wire Insulation
+TODO COIL specs -- radius, _magnetic_ wire (enameled coating rather than PVC)
+Enameled wire is harder to strip --  easiest with sandpaper or scraping with scissors but alternative methods exist like chemical bath.
+
+### Building
 ...
 
-Describe the magnet as N52 and what N52 means, why we chose it -- some advice/info on rare earth magnets
-Spherical magnet and shape of magnet
 Discuss shape of magnet holder + how the magnet fits into the magnet holder (glue?)
 How rotor fits into cylinder w/ bearings to stabilize rotation.
-How we determined radius of cylinder (and therefore coil) and why -- magnetic field diagram.
-MATH SECTION
+
+### Testing
+QUICK TEST OF GENERATOR BY TESTING VOLTAGE vs. ANGULAR FREQUENCY -- show graph(s)
 
 ## 2. Circuit
 ## 3. Bike Interface

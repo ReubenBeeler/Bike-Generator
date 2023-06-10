@@ -5,12 +5,12 @@ Authors: Reuben Beeler, Audrey O'Malley, Cora Constantinescu
 
 
 ### WELCOME!
-This repository is a collection of primarily 3D-model files for our UCSB Physics 13CL, 10-week project -- a bike-driven, permanent-magnet generator that can power auxiliary electronic devices (such as a mobile phone). If you are interested in building a similar project for yourself, continue onwards! This is a comprehensive set of instructions for building our project (with special notes along the way to make the journey as seamless as possible!). 
+This repository is a collection of 3D-model files for our UCSB Physics 13CL, 10-week project -- a bike-driven, permanent-magnet generator that can power auxiliary electronic devices (such as a mobile phone). The final product was a stationary bike where the back wheel of a mobile bike was replaced with our mechanical generator, which was securely attached to the gears and frame of the bike. If you are interested in building a similar project for yourself, continue onwards! This is a comprehensive set of instructions for building our project (with special notes along the way to make the journey as seamless as possible!). 
 
-The first detail to note about this project is that there are a few crucial, pre-existing components in this design which we had to work around, namely a permanent magnet, a USB charging cable, and a [type] bike. The design of our circuitry and 3D-printed parts had to meet the specifications and sizes of each of these components, so naturally this manual is segmented into 3 chapters. (Note that such objects come in a variety of flavors, so it is likely that slight modifications need to be made to fit your exact needs).
+The first detail to note about this project is that there are a few crucial, pre-existing components in this design which we had to work around, namely a permanent magnet, a USB charging cable, and a bike with a $135\\,\text{mm}$ rear frame/hub spacing. The design of our circuitry and 3D-printed parts had to meet the specifications and sizes of each of these components, so naturally this manual is segmented into 3 chapters. (Note that such objects come in a variety of flavors, so it is likely that slight modifications need to be made to fit your exact needs). Before we dive in, here is a brief overview of the required materials.
 
 ### Materials and Budget
-The cost of the entire project, for those who already own a [type] bike, is around $200. Do note that the below table indexes the costs of each component, even though not all materials will be fully used. For example, PLA filament typically comes in batches of a kilogram, yet the project only demands a couple hundred grams (if all parts are printed successfully).
+The cost of the entire project, for those who already own a bike, is around $200. Do note that the below table indexes the costs of each component, even though not all materials will be fully used. For example, PLA filament typically comes in batches of a kilogram, yet the project only demands a couple hundred grams (if all parts are printed successfully).
 
 | Item | Price |
 | -------------------------- | -------------------------- |
@@ -24,6 +24,9 @@ The cost of the entire project, for those who already own a [type] bike, is arou
 | [Heat Sink](https://www.amazon.com/dp/B07ZMH4FDW?psc=1&ref=ppx_yo2ov_dt_b_product_details) | $6.99 |
 |[Magnet](https://www.amazon.com/gp/product/B07KF61YZT/ref=ppx_yo_dt_b_search_asin_title?ie=UTF8&psc=1)| $16.99 |
 |3D Printer Filament| $20.00 |
+|Galvanized Hex Bolt: 3/8 inch diameter, 1 inch long| $2 |
+|Galvanized Hex Bolt: 3/8 inch diameter, 2.5 inch long| $2 |
+|2 Galvanized Hex Nuts: 3/8 inch diameter| $2 |
 |Bicycle| -- |
 |Desired USB Powered Electronic Device| -- |
 
@@ -79,7 +82,8 @@ What spins and what doesn't? An electromagnetic generator simply requires a magn
 
 The rotor combined with the cylinder looks like this:
 
-![Cylinder Right smaller](https://github.com/ReubenBeeler/Bike-Generator/assets/45247193/b3fad9f1-ee07-44b7-a1b9-4b571594154f) ![Cylinder Front Right smaller](https://github.com/ReubenBeeler/Bike-Generator/assets/45247193/2e1a30e9-bca3-45cd-8ab2-0062c04af4ac)
+![Cylinder Right smaller](https://github.com/ReubenBeeler/Bike-Generator/assets/45247193/b3fad9f1-ee07-44b7-a1b9-4b571594154f)
+![Cylinder Front Right smaller](https://github.com/ReubenBeeler/Bike-Generator/assets/45247193/2e1a30e9-bca3-45cd-8ab2-0062c04af4ac)
 
 #### Angular Frequency
 How fast do (should) we spin the magnet? If the magnet is spinning with some constant angular velocity, the magnetic flux would look like
@@ -104,16 +108,15 @@ Which size of wire should you pick for the coil?... We use copper wire as it's a
 Typically, wires are insulated using a flexible variant of PVC. This is great for increasing durability of dangling wires, however it is very space-inefficient for constructing a solenoid. The common solution for such a problem is buying wire with an enamel coating, called _magnetic_ wire. This enamel coating has a darkish-orange color similar to copper and is notoriously difficult to strip. Typical wire strippers are generally incompetent for removing enamel coating (especially on very small wires such as 30 AWG), so the next best methods are a) scraping with a knife or scissors and b) using sandpaper of roughly P200 grit.
 
 #### 3D-Print Filament
-This project involves a decent amount of 3D printing, and printing the provided STL files with the wrong settings can easily break a build. Choosing the correct settings comes with experience, but choosing the correct materials can be done from the get-go. The filament used in our final project was PLA, a 3D-printing standard which worked sufficiently well. Some problems introduced themselves when printing the magnet holder, which has threads of diameter $8\\,\text{mm}$ and pitch $1.25$. Printing the rotor horizontally flat, even with layer height of $0.05\\,\text{mm}$$, leads to enough imprecision when printing the threads that a nut cannot be screwed on (a problem which becomes evident later). Printing the rotor vertically fixes the layer-height imprecision issue, but causes the rotor to be weaker under torsion. This allows the rotor to break easily when given a strong rotation acceleration. In the end, the rotor was printed horizontally with increased shell count to solve the torsion issue, while we used a tap set to fix the imprecise threading issue. We did experiment with TPU, as it is a flexible and more durable alternative to PLA, but thread precision and tapping is an issue; it is a notable candidate worth trying, but PLA does the job.
+This project involves a decent amount of 3D printing, and printing the provided STL files with the wrong settings can easily break a build. Choosing the correct settings comes with experience, but choosing the correct materials can be done from the get-go. The filament used in our final project was PLA, a 3D-printing standard which worked sufficiently well. Some problems introduced themselves when printing the magnet holder, which has threads of diameter $8\\,\text{mm}$ and pitch $1.25$. Printing the rotor horizontally flat, even with layer height of $0.05\\,\text{mm}$$, leads to enough imprecision when printing the threads that a nut cannot be screwed on (a problem which becomes evident later). Printing the rotor vertically fixes the layer-height imprecision issue, but causes the rotor to be weaker under torsion. This allows the rotor to break easily when given a strong rotation acceleration. In the end, the rotor was printed horizontally with increased shell count to solve the torsion issue, while we used a tap set to fix the imprecise threading issue.  During your 3D-printing, ensure that the layer height is $0.05\\,\text{mm}$ when printing the threads. Additionally, the rotor (and any other parts which experience significant stress) should be printed with about 80% infill to prevent breaking.
+
+We did experiment with TPU, as it is a flexible and more durable alternative to PLA, but thread precision and tapping is an issue; it is a notable candidate worth trying, but PLA does the job.
 
 ### Building
-Given the above information, the design of the generator follows accordingly. The magnet holder slides through a slit in the cylinder, after which the magnet may be inserted. The magnet holder, depicted below, fits around our magnet snugly without the need of an adhesive.
+Given the above information, the design of the generator follows accordingly. The magnet holder slides through a slit in the cylinder, after which the magnet may be inserted. The magnet holder, as depicted above in the Rotor and Stator section, fits around our magnet snugly without the need of an adhesive. In order to stabilize the rotation of the rotor, we use two 608Z ball bearings ($8\\,\text{mm}$ inner radius, $22\\,\text{mm}$ outer radius, $7\\,\text{mm}$ height), one on each side of the rotor. The outside of the bearings are stationary with the cylinder and fit snugly into the two circular slots, while the inside of the bearing rotates with the rotor. The bearings (depicted as gray disks) are visualized below: top view is on left, bottom view is on right.
 
-![Rotor](https://github.com/ReubenBeeler/Bike-Generator/assets/45247193/bebb2583-a3b0-46ee-b6f5-17cd762baddd)
-
-In order to stabilize the rotation of the rotor, we use two 608Z ball bearings ($8\\,\text{mm}$ inner radius, $22\\,\text{mm}$ outer radius, $7\\,\text{mm}$ height), one on each side of the rotor. The outside of the bearings are stationary with the cylinder and fit snugly into the two circular slots, while the inside of the bearing rotates with the rotor. The bearings (depicted as gray disks) are visualized below: top view is on left, bottom view is on right.
-
-![Bearing and Nut 1](https://github.com/ReubenBeeler/Bike-Generator/assets/45247193/932c66b5-1ebd-48c1-9e68-b1fc2e1a5198) ![Bearing and Nut 2](https://github.com/ReubenBeeler/Bike-Generator/assets/45247193/a26986b0-9b96-4cd8-a137-60839687a248)
+![Bearing and Nut 1](https://github.com/ReubenBeeler/Bike-Generator/assets/45247193/932c66b5-1ebd-48c1-9e68-b1fc2e1a5198)
+![Bearing and Nut 2](https://github.com/ReubenBeeler/Bike-Generator/assets/45247193/a26986b0-9b96-4cd8-a137-60839687a248)
 
 In the above pictures, two 3D-printed nuts (in black) keep the rotor in the correct vertical alignment. Without such nuts, the magnet is attracted to one bearing or the other, pulling the rotor far enough to one side that it collides with the inside of the cylinder.
 
@@ -167,6 +170,43 @@ The final circuit step was to attach it to the power bank in hopes of actually c
 The power bank did not charge at first. Connecting it to the circuit altered the total impedance of our circuit since the bank has some intrinsic resistance. It caused our smooth DC output to become less stable and have a lower voltage. As a result, we still had to do some more minor adjustments to the value of our capacitor. After some more guess and check, we landed on the 47𝜇F mentioned above. 
 
 ## 3. Bike Interface
+Recall the main goal of the project... generating power with a _bike_. Attaching the generator to the bike requires some interface between each end of the generator and the bike frame. The side of the bike with the chain should have a set of gears which connects directly to the rotor, forming the rotating interface. The other side of the frame simply connects to the cylinder, both of which are stationary, hence forming the stationary interface. These two interfaces together complete the bike interface.
+
+### Rotating Interface
+The gears (which have built-in ball bearings) should rest on a stationary 2.5-inch long, galvanized hex bolt. This bolt will be fastened to the chain-side of the bike using a galvanized hex nut. However, the bolt doesn't just magically fit into the gears; the design for the gear interface with the bolt consists of two 3D-printed parts (shown below). The left piece fits snugly around the head of the bolt, while the right one fits somewhat loosely on top of the gear. A tight fit for the latter piece is not needed as it will be kept in place from lateral pressure when placed on the bike. It also serves as a spacer between the frame and gears; feel free to adjust its width to match the hub and gear spacing on your particular bike.
+
+![bolt smaller](https://github.com/ReubenBeeler/Bike-Generator/assets/45247193/499b398c-acca-442b-958a-fd836c1dd889)
+![gear smaller](https://github.com/ReubenBeeler/Bike-Generator/assets/45247193/1517d25d-ab69-4b82-86bd-1c36fd44b64d)
+
+Putting the bolt and gears together, it should look something like this:
+
+![gear face smaller](https://github.com/ReubenBeeler/Bike-Generator/assets/45247193/c741f019-14be-4058-9b2c-522cf6cad680)
+![gear and bolt smaller](https://github.com/ReubenBeeler/Bike-Generator/assets/45247193/fb8fdc95-00c4-48dd-9d7e-39c62ace15ce)
+
+Once that is done, the gear will need to interface with the rotor. Conveniently, there is a set of 6 regular hole patterns in the gears. We capitalize on this by creating an attachment to the rotor (similar to the hand-crank), which we call "gear fingers". The gear fingers have 6 protrusions "fingers" which snugly fit into the 6 holes of the gears. At the center of the gear fingers lies a threaded hole which screws onto the longer side of the rotor, just next to the 3D-printed nut. The next two images show the gear fingers attached to the rotor. Note the bearing, which is just next to the threaded section of the magnet holder. Note also that the 3D-printed nut (which would be inbetween the gear fingers and the bearing) is not present in this photo. (During the process of debugging, you may find that the nuts are not necessary or that only one nut is needed).
+
+![gears rotor 1 smaller](https://github.com/ReubenBeeler/Bike-Generator/assets/45247193/7cae87d2-4b62-4338-b7b8-738d73bc504d)
+![gears rotor 2 smaller](https://github.com/ReubenBeeler/Bike-Generator/assets/45247193/6ad5b30c-9f97-4478-8897-93be4a75c2f0)
+
+Finally, ensure that the gear fingers fulfill their requirement of fitting snugly into the gears. They should look like this:
+
+![gears fingers rotor smaller](https://github.com/ReubenBeeler/Bike-Generator/assets/45247193/94569acc-653b-4ee8-8a50-85a2064542b5)
+
+The galvanized hex bolt from before is not shown in this photo. When attaching the generator to the bike, the gear fingers will cover the head side of the hex bolt while the tail end will attach to the bike frame.
+
+### Stationary Interface
+The stationary interface has no moving parts and is consequently a little more straightforward. The cylinder interfaces with the bike using a hex bolt & nut and a single 3D-printed part. The threaded part of the cylinder screws into this 3D-printed interface, which holds in place the 1-inch galvanized hex bolt in a fashion similar to the previous section. The 3D-printed piece appears below.
+
+![stat-face smaller](https://github.com/ReubenBeeler/Bike-Generator/assets/45247193/426f4712-6443-48b8-a197-2d59e8a13268)
+![stat-face bolt smaller](https://github.com/ReubenBeeler/Bike-Generator/assets/45247193/d24b1702-0539-42d6-ab4c-e01c87d26425)
+
+Here is a before-after shot of the cylinder to clarify how the result of the stationary interface should look.
+
+![cylinder smaller](https://github.com/ReubenBeeler/Bike-Generator/assets/45247193/9f784b5b-a7a9-4ee0-a42c-8636da196463)
+![cylinder stat-face bolt smaller](https://github.com/ReubenBeeler/Bike-Generator/assets/45247193/ace6d3d2-54e5-4cef-a427-7add63d45f26)
+
+
+### Final Bike Interface
 
 ## Integration Testing!
 Now that our generator is attached to the bike, we should be able to pedal the bike to output electricity. Before implementing the circuit, we get an AC generator output:

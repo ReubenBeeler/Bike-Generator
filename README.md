@@ -11,6 +11,8 @@ The first detail to note about this project is that there are a few crucial, pre
 
 ### Materials and Budget
 
+Given that we already had a bike, we estimate that this project cost about $300.
+
 | Item |
 | -------------------------- |
 | [30 AWG Magnetic Wire](https://www.amazon.com/TEMCo-AWG-Copper-Magnet-Wire/dp/B00IAZYI3M)  |
@@ -157,7 +159,6 @@ In the plot we can clearly see that the voltage is zero before we start pedaling
 Using a multimeter, we measured the current flowing out of this circuit was 0.45A. Using the power relation P = IV,  we have a final power of 2.25 W supplied to the power bank. 
 Now that we finally have all of the elements connected and working as expected, we can ride the bike and charge the power bank. On our power bank, the lights blinking indicates that it is charging.
 
-INSERT VID HERE
-
+https://github.com/ReubenBeeler/Bike-Generator/assets/110072246/ba390a81-985c-445b-9bbe-54cf46ee8960
 
 To achieve this constant charging, we needed to pedal at a constant speed. We had to pedal somewhat quickly (about 100 rpm) but not impossibly fast, as shown in the video. 

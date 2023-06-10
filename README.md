@@ -94,6 +94,34 @@ How rotor fits into cylinder w/ bearings to stabilize rotation.
 QUICK TEST OF GENERATOR BY TESTING VOLTAGE vs. ANGULAR FREQUENCY -- show graph(s)
 
 ## 2. Circuit
+Most devices powered through USB take a voltage input of 5V DC. This motivated our next goal of converting the AC output from the generator into a usable DC current. We used the circuit pictured consisting of a bridge rectifier, a capacitor, and a voltage regulator.
+
+![circuit diagram](https://github.com/ReubenBeeler/Bike-Generator/assets/134644741/14eb47b8-220e-4459-ad16-2f7ab0d1c105)
+
+### Full Bridge Rectification
+The first part of our circuit is a bridge rectifier which is a set of four diodes arranged such that during the positive half of the voltage period, the current flows through one pair of diagonal diodes, and through the other pair on the negative half of the period. This resulted in a full bridge rectification where the output was an entirely non-negative voltage. This is exemplified by this transition from an AC voltage on the left ranging from -8V to 8V to an oscillating DC voltage on the right ranging from 0V to 8V. The frequency also nearly doubles after rectification since all of the AC troughs were rectified to become positive peaks. 
+
+![full bridge rectification](https://github.com/ReubenBeeler/Bike-Generator/assets/134644741/99cf739e-5432-422d-ad27-4cd0bac6ac53)
+
+### Capacitor Smoothing
+The next component of our circuit is a smoothing capacitor with a capacitance of 47𝜇F. This capacitor acts as a buffer by charging up as the voltage input increases. Then, as the rectifier voltage falls, the capacitor provides the required voltage to keep the overall voltage output steady. This leaves us with a DC voltage. This is demonstrated in the plots below; on the left, the rectified voltage ranging from 0V to 8V is transformed into a constant 7V DC after the capacitor, shown on the right.
+
+![capacitor smoothing](https://github.com/ReubenBeeler/Bike-Generator/assets/134644741/2d92b6fd-0c30-45af-afc6-7f4e5a5e221b)
+
+At this step, we had to try many different circuit components and arrangements before we achieved this consistent DC voltage; i.e. different capacitor values, adding resistors, and moving them to different locations and orientations in the circuit. It depended on the voltage and frequency we were inputting into the circuit. The most effective method for us was trial and error, so for more drastically different inputs, there may need to be slight alteration to the circuit. 
+
+### Voltage Regulation
+The last component of our circuit was a voltage regulator which will generate a fixed output voltage. We chose a L7805 voltage regulator which caps the voltage at 5V– exactly what a USB powered electronic device expects. The voltage regulator works by dissipating the excess power in heat meaning we need to attach a heat sink to it to prevent it from overheating. In the plots below we can see that the voltage regulator transformed the 7V DC input on the left to a 5V DC output on the right. It also smoothed out any small oscillations or noise that can be seen in the input voltage on the left.
+
+![voltage regulation](https://github.com/ReubenBeeler/Bike-Generator/assets/134644741/d21bb65b-7dc0-443f-bc8f-4355500eabef)
+
+It is important to also note that every voltage regulator will have a dropout voltage. This is the minimum value of the difference between the input voltage and the output voltage for it to function correctly. A 5V voltage regulator has a dropout voltage of 2V meaning that it needs a minimum input of 7V. If less than 7V is provided, regulation will not occur. However, a voltage that is too high can also cause complications. A 5V voltage regulator has a maximum input of 35V. If the input voltage gets too high, you risk damaging the component. 
+
+### Connection to the Power Bank
+The final circuit step was to attach it to the power bank in hopes of actually charging it. We used the USB cord that charged the power bank. Cutting it open exposed two wires, a positive and negative. We hooked those up directly to the positive and negative outputs of our circuit. We were then able to directly plug the cord into the bank.
+
+The power bank did not charge at first. Connecting it to the circuit altered the total impedance of our circuit since the bank has some intrinsic resistance. It caused our smooth DC output to become less stable and have a lower voltage. As a result, we still had to do some more minor adjustments to the value of our capacitor. After some more guess and check, we landed on the 47𝜇F mentioned above. 
+
 ## 3. Bike Interface
 
 ## Integration Testing!

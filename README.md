@@ -10,21 +10,20 @@ This repository is a collection of primarily 3D-model files for our UCSB Physics
 The first detail to note about this project is that there are a few crucial, pre-existing components in this design which we had to work around, namely a permanent magnet, a USB charging cable, and a [type] bike. The design of our circuitry and 3D-printed parts had to meet the specifications and sizes of each of these components, so naturally this manual is segmented into 3 chapters. (Note that such objects come in a variety of flavors, so it is likely that slight modifications need to be made to fit your exact needs).
 
 ### Materials and Budget
-
-Given that we already had a bike, we estimate that this project cost about $200.
+The cost of the entire project, for those who already own a [type] bike, is around $200. Do note that the below table indexes the costs of each component, even though not all materials will be fully used. For example, PLA filament typically comes in batches of a kilogram, yet the project only demands a couple hundred grams (if all parts are printed successfully).
 
 | Item | Price |
 | -------------------------- | -------------------------- |
 | [30 AWG Magnetic Wire](https://www.amazon.com/TEMCo-AWG-Copper-Magnet-Wire/dp/B00IAZYI3M)  | $36.36 |
 | [Indoor Bike Stand](https://www.amazon.com/SONGMICS-Indoor-Trainer-Reduces-USBT01B/dp/B07YJLTQRD/ref=sr_1_4?crid=3Q8VMSY8JQ2O5&keywords=turn+bike+into+stationary+bike&qid=1681260447&sprefix=turn+bike+%2Caps%2C177&sr=8-4)  | $59.99 |
 | [Bike Sprocket](https://www.amazon.com/EBIKELING-7-Speed-Bicycle-Freewheel-Cassette/dp/B07C86GR9W/ref=sr_1_1_sspa?crid=1X0FJKQU88P97&keywords=bicycle+gears&qid=1681264320&sprefix=bicycle+gears+%2Caps%2C350&sr=8-1-spons&psc=1&spLa=ZW5jcnlwdGVkUXVhbGlmaWVyPUE5MUc0NzlHMFRSNUkmZW5jcnlwdGVkSWQ9QTA4NzgzMTMxT00ySk83VUk0TTlLJmVuY3J5cHRlZEFkSWQ9QTA1MTE5MTgyOERRT0UySk9ROUFUJndpZGdldE5hbWU9c3BfYXRmJmFjdGlvbj1jbGlja1JlZGlyZWN0JmRvTm90TG9nQ2xpY2s9dHJ1ZQ==)  | $18.98 |
-| [Deep Groove Ball Bearings](https://www.amazon.com/TIMKEN-15x35x11mm-Pre-Lubricated-Performance-Effective/dp/B08DR617F2/ref=sxts_b2b_ccp_search_w_op?content-id=amzn1.sym.5b4ffd46-5d67-49f6-8205-cc9b687c425b%3Aamzn1.sym.5b4ffd46-5d67-49f6-8205-cc9b687c425b&crid=2OAAC1KW40ZWV&cv_ct_cx=deep+groove+ball+bearing&keywords=deep+groove+ball+bearing&pd_rd_i=B08DR617F2&pd_rd_r=f78fcb4a-7ffa-4a6f-9c07-403da8807c19&pd_rd_w=qo7mz&pd_rd_wg=L0UJq&pf_rd_p=5b4ffd46-5d67-49f6-8205-cc9b687c425b&pf_rd_r=RPSWP7MGHK4HNJ28FX7F&qid=1681261523&sbo=RZvfv%2F%2FHxDF%2BO5021pAnSA%3D%3D&sprefix=deep+groove+ball+bearin%2Caps%2C163&sr=1-1-d27bdacb-ad14-3372-97fb-5f5070035007)  | $12.48 |
+| 2 608Z Ball Bearings | $10 |
 | [Bridge Rectifier](https://www.amazon.com/Bridgold-KBPC5010-Rectifier-Electronic-Silicon/dp/B07MQ65HLB/ref=sr_1_3?crid=RE6GX8ZWP371&keywords=bridge+rectifier&qid=1686367944&sprefix=bridge+re%2Caps%2C165&sr=8-3) | $8.99 |
 | [Jumper Wire Kit](https://www.amazon.com/dp/B07CJYSL2T?psc=1&ref=ppx_yo2ov_dt_b_product_details)| $11.99 |
-| [Voltage Regulator](https://www.amazon.com/dp/B07T5ZHY63?psc=1&ref=ppx_yo2ov_dt_b_product_details)| $13.99 |
+| [5V Voltage Regulator](https://www.amazon.com/dp/B07T5ZHY63?psc=1&ref=ppx_yo2ov_dt_b_product_details)| $13.99 |
 | [Heat Sink](https://www.amazon.com/dp/B07ZMH4FDW?psc=1&ref=ppx_yo2ov_dt_b_product_details) | $6.99 |
 |[Magnet](https://www.amazon.com/gp/product/B07KF61YZT/ref=ppx_yo_dt_b_search_asin_title?ie=UTF8&psc=1)| $16.99 |
-|3D Printer Filament| -- |
+|3D Printer Filament| $20.00 |
 |Bicycle| -- |
 |Desired USB Powered Electronic Device| -- |
 
@@ -74,7 +73,7 @@ While cylindrical or rectangular magnets are common, they are not ideal for a ge
 Where in the magnetic field diagram is our cylinder?... Maximizing magnetic flux (and emf, current, etc.) in our generator is achieved by maximizing the enclosed field lines per loop of wire in the coil. For a single loop of wire whose axis of symmetry would appear vertically in the field diagram, it is visually evident that the loop should be placed immediately around the cylinder to enclose the maximum number of field lines. While it is interesting to consider the optimial radius for a loop of wire with some offset along the magnet's axis, the coil will not be sufficiently large to justify further exploration of this topic; the optimal location of the coil given our needs is as close to the magnet as possible.
 
 #### Rotor and Stator
-What spins and what doesn't? An electromagnetic generator simply requires a magnet to move relative to a coil. In the user's reference frame, the magnet could spin or the coil could spin (or both!). To optimize for simplicity (to avoid the difficulty of wire brushes), the coil is kept stationary relative to the bike while the permanent magnet rotates inside the coil. To maintain this rotation, we should encapsulate the magnet in some sort of contain which we can rotate inside of the cylinder. To understand what that might look like for our cylindrical magnet, observe the following 3D model of the magnet, a "magnet holder", and the cylinder around which a coil would be wrapped.
+What spins and what doesn't? An electromagnetic generator simply requires a magnet to move relative to a coil (which is wrapped around a hollow cylinder). In the user's reference frame, the magnet could spin or the coil could spin (or both!). To optimize for simplicity (to avoid the difficulty of wire brushes), the coil and cylinder (called the "stator") are kept stationary relative to the bike while the permanent magnet and "magnet holder" (called the "rotor") rotate inside the coil. To understand what that might look like for our cylindrical magnet, observe the following 3D model of the magnet, a "magnet holder", and the cylinder.
 
 TODO image of cylinder + rotor
 
@@ -85,7 +84,7 @@ How fast do (should) we spin the magnet? If the magnet is spinning with some con
 
 TODO add equation: PHI = PHI_0 sin(OMEGA * t)
 
-where _TODO PHI_0_ is a constant depending on the geometry of the magnet and coil. Using Faraday's Law, we find that
+where $\Phi_0$ is a constant depending on the geometry of the magnet and coil. Using Faraday's Law, we find that
 
 TODO add equation: EMF = OMEGA * PHI_0 sin(OMEGA * t)
 
@@ -95,30 +94,43 @@ TODO add equation: EMF = OMEGA * PHI_0 sin(OMEGA * t)
 Consider a solenoid with a variable number of windings. Increasing the number of windings of the solenoid quadratically increases the absolute value of magnetic flux (and its time derivative), thus increasing the absolute value of the induced emf. In general, more wrapped wire provides more electrical generation. However, realistic wires have some resistance! Having an inductor with an enormous amount of wire (relative to the impedance of the load) would be counterproductive since most of the energy would be dissipated by the inductor's resistance. So, there must be some optimal amount of wire to use in the inductor. Unfortunately, due to the complicated nature of the various dissipative forces, it is difficult to predict what exactly that optimum is.
 
 #### Wire Size
-Which size of wire should you pick for the coil?... We use copper wire as it is a good, cheap conductor. Knowing the resistivity of copper wire and the expected impedance of the load (about $5\\,\text{k}\Omega$), we calculated an optimal wire gauge of about 35 AWG. This calculation maximized inductance of the solenoid over resistance of our circuit while keeping constant the volume of space filled by the wire of the solenoid (since magnetic field drops off quickly). This was a crude sort of calculation but was enough to support an argument for a very thin wire... so thin that the 35 AWG wire is difficult to handle without breaking, so we resorted to using a [CMS Magnetics 30 AWG wire](https://www.amazon.com/gp/product/B07XPS2MSM/ref=ppx_yo_dt_b_search_asin_title?ie=UTF8&th=1) for the solenoid.
+Which size of wire should you pick for the coil?... We use copper wire as it's a good, cheap conductor. Knowing the resistivity of copper wire and the expected impedance of the load (about $5\\,\text{k}\Omega$), we calculated an optimal wire gauge of about 35 AWG. This calculation maximized inductance of the solenoid over resistance of our circuit while keeping constant the volume of space filled by the wire of the solenoid (since magnetic field drops off quickly). This was a crude sort of calculation but was enough to support an argument for a very thin wire... so thin that the 35 AWG wire is difficult to handle without breaking, so we resorted to using a [CMS Magnetics 30 AWG wire](https://www.amazon.com/gp/product/B07XPS2MSM/ref=ppx_yo_dt_b_search_asin_title?ie=UTF8&th=1) for the solenoid.
 
-**After completing the project:** In hindsight, a thicker wire (around 25 AWG) would have been a better choice for allowing more current without overheating and over-resisting; our magnetic wire was rated for $0.2\\,\text{A}$, which was easily exceeded. With the voltage regulation of $5\\,\text{V}$ for USB charging, the output power was limited to the order of a watt. Definitely experi
+**Post-project note:** In hindsight, a thicker wire (around 25 AWG) would have been a better choice for allowing more current without overheating the wire: our magnetic wire was rated for $0.2\\,\text{A}$, which was easily exceeded. With the voltage regulation of $5\\,\text{V}$ for USB charging, the output power was limited to the order of a watt. For a more powerful USB charger (our end goal), we advise using a thicker wire.
 
 #### Wire Insulation
-Typically, wires are insulated using a flexible variant of PVC
-TODO COIL specs -- radius, _magnetic_ wire (enameled coating rather than PVC)
-Enameled wire is harder to strip --  easiest with sandpaper or scraping with scissors but alternative methods exist like chemical bath.
+Typically, wires are insulated using a flexible variant of PVC. This is great for increasing durability of dangling wires, however it is very space-inefficient for constructing a solenoid. The common solution for such a problem is buying wire with an enamel coating, called _magnetic_ wire. This enamel coating has a darkish-orange color similar to copper and is notoriously difficult to strip. Typical wire strippers are generally incompetent for removing enamel coating (especially on very small wires such as 30 AWG), so the next best methods are a) scraping with a knife or scissors and b) using sandpaper of roughly P200 grit.
 
 #### 3D-Print Filament
-PLA vs. ABS? vs. TPU, threads
+This project involves a decent amount of 3D printing, and printing the provided STL files with the wrong settings can easily break a build. Choosing the correct settings comes with experience, but choosing the correct materials can be done from the get-go. The filament used in our final project was PLA, a 3D-printing standard which worked sufficiently well. Some problems introduced themselves when printing the magnet holder, which has threads of diameter $8\\,\text{mm}$ and pitch $1.25$. Printing the rotor horizontally flat, even with layer height of $0.05\\,\text{mm}$$, leads to enough imprecision when printing the threads that a nut cannot be screwed on (a problem which becomes evident later). Printing the rotor vertically fixes the layer-height imprecision issue, but causes the rotor to be weaker under torsion. This allows the rotor to break easily when given a strong rotation acceleration. In the end, the rotor was printed horizontally with increased shell count to solve the torsion issue, while we used a tap set to fix the imprecise threading issue. We did experiment with TPU, as it is a flexible and more durable alternative to PLA, but thread precision and tapping is an issue; it is a notable candidate worth trying, but PLA does the job.
 
 ### Building
-...
+Given the above information, the design of the generator follows accordingly. The magnet holder slides through a slit in the cylinder, after which the magnet may be inserted. The magnet holder, depicted below, fits around our magnet snugly without the need of an adhesive.
 
-Discuss shape of magnet holder + how the magnet fits into the magnet holder (glue?)
-How rotor fits into cylinder w/ bearings to stabilize rotation.
+![Rotor](https://github.com/ReubenBeeler/Bike-Generator/assets/45247193/bebb2583-a3b0-46ee-b6f5-17cd762baddd)
+
+In order to stabilize the rotation of the rotor, we use two 608Z ball bearings ($8\\,\text{mm}$ inner radius, $22\\,\text{mm}$ outer radius, $7\\,\text{mm}$ height), one on each side of the rotor. The outside of the bearings are stationary with the cylinder and fit snugly into the two circular slots, while the inside of the bearing rotates with the rotor. The bearings (depicted as gray disks) are visualized below: top view is on left, bottom view is on right.
+
+![Bearing and Nut 1](https://github.com/ReubenBeeler/Bike-Generator/assets/45247193/932c66b5-1ebd-48c1-9e68-b1fc2e1a5198) ![Bearing and Nut 2](https://github.com/ReubenBeeler/Bike-Generator/assets/45247193/a26986b0-9b96-4cd8-a137-60839687a248)
+
+In the above pictures, two 3D-printed nuts (in black) keep the rotor in the correct vertical alignment. Without such nuts, the magnet is attracted to one bearing or the other, pulling the rotor far enough to one side that it collides with the inside of the cylinder.
+
+The next obvious step is to create the coil, which should be wrapped as close to the center as possible for reasons discussed earlier. Our generator functioned with just 300 turns; the exact number depends on your needs.
+
+Finally, we should test the generator, which requires a method of rotating the rotor. A simple hand-crank is a practical solution for testing and debugging. The provided hand-crank in this repository is essentially an extension of a nut which screws onto the longer threaded side of the rotor as seen below.
+
+![Cylinder Hand Crank Interface](https://github.com/ReubenBeeler/Bike-Generator/assets/45247193/99bd367e-a16f-40d7-bc46-134ba0130c72)
 
 ### Testing
-In order to test that our generator was working properly, we used a fan to drive the rotor. We tested the voltage amplitudes at different frequencies and compiled their results in the following plot. 
+In order to test that our generator was working properly, we used both a fan motor and a hand crank to drive the rotor. An oscilloscope trace of the output is below.
+
+![ac scope trace](https://github.com/ReubenBeeler/Bike-Generator/assets/45247193/482bb655-9bef-440c-b48f-3c9cb9f51506)
+
+Then, we tested the voltage amplitudes at different frequencies and compiled their results to produce the the following plot.
 
 <img width="400" alt="Voltage vs Frequency" src="https://github.com/ReubenBeeler/Bike-Generator/assets/110072246/680f13eb-de3f-478e-b0af-822359e30014">
 
-Here we see a linear relationship between frequency and voltage maximum. This is confirmed by theory and gives us the following value of $\Phi_{0}$
+Here we see a linear relationship between frequency and voltage maximum. This is confirmed by theory and gives us the following value of $\Phi_{0}$.
 
 <img src="https://github.com/ReubenBeeler/Bike-Generator/assets/110072246/e1f1a36b-66e6-429a-8de4-5e3054996da1" height="100">
 
@@ -148,7 +160,7 @@ The last component of our circuit was a voltage regulator which will generate a 
 It is important to also note that every voltage regulator will have a dropout voltage. This is the minimum value of the difference between the input voltage and the output voltage for it to function correctly. A 5V voltage regulator has a dropout voltage of 2V meaning that it needs a minimum input of 7V. If less than 7V is provided, regulation will not occur. However, a voltage that is too high can also cause complications. A 5V voltage regulator has a maximum input of 35V. If the input voltage gets too high, you risk damaging the component. 
 
 ### Connection to the Power Bank
-The final circuit step was to attach it to the power bank in hopes of actually charging it. We used the USB cord that charged the power bank. Cutting it open exposed two wires, a positive and negative. We hooked those up directly to the positive and negative outputs of our circuit. We were then able to directly plug the cord into the bank.
+The final circuit step was to attach it to the power bank in hopes of actually charging it. We used the USB cord that charged the power bank. Cutting it open exposed two wires, a positive and negative (since it is a no-media cable). We hooked those up directly to the positive and negative outputs of our circuit. We were then able to directly plug the cord into the bank.
 
 The power bank did not charge at first. Connecting it to the circuit altered the total impedance of our circuit since the bank has some intrinsic resistance. It caused our smooth DC output to become less stable and have a lower voltage. As a result, we still had to do some more minor adjustments to the value of our capacitor. After some more guess and check, we landed on the 47𝜇F mentioned above. 
 

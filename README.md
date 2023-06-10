@@ -116,7 +116,12 @@ How rotor fits into cylinder w/ bearings to stabilize rotation.
 ### Testing
 In order to test that our generator was working properly, we used a fan to drive the rotor. We tested the voltage amplitudes at different frequencies and compiled their results in the following plot. 
 
-![Voltage vs Frequency](https://github.com/ReubenBeeler/Bike-Generator/assets/110072246/bb5b6303-3169-494d-9645-22d230b48d2d)
+<img width="400" alt="Voltage vs Frequency" src="https://github.com/ReubenBeeler/Bike-Generator/assets/110072246/680f13eb-de3f-478e-b0af-822359e30014">
+
+Here we see a linear relationship between frequency and voltage maximum. This is confirmed by theory and gives us the following value of $\Phi_{0}$
+
+<img src="https://github.com/ReubenBeeler/Bike-Generator/assets/110072246/e1f1a36b-66e6-429a-8de4-5e3054996da1" height="100">
+
 
 ## 2. Circuit
 Most devices powered through USB take a voltage input of 5V DC. This motivated our next goal of converting the AC output from the generator into a usable DC current. We used the circuit pictured consisting of a bridge rectifier, a capacitor, and a voltage regulator. We used an oscilloscope to collect all of the following scope traces.

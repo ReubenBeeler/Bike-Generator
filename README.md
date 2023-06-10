@@ -9,6 +9,13 @@ This repository is a collection of primarily 3D-model files for our UCSB Physics
 
 The first detail to note about this project is that there are a few crucial, pre-existing components in this design which we had to work around, namely a permanent magnet, a USB charging cable, and a [type] bike. The design of our circuitry and 3D-printed parts had to meet the specifications and sizes of each of these components, so naturally this manual is segmented into 3 chapters. (Note that such objects come in a variety of flavors, so it is likely that slight modifications need to be made to fit your exact needs).
 
+### Materials and Budget
+
+| Item  | Link |
+| ------------- | ------------- |
+| Deep Groove Ball Bearings  | https://www.amazon.com/TIMKEN-15x35x11mm-Pre-Lubricated-Performance-Effective/dp/B08DR617F2/ref=sxts_b2b_ccp_search_w_op?content-id=amzn1.sym.5b4ffd46-5d67-49f6-8205-cc9b687c425b%3Aamzn1.sym.5b4ffd46-5d67-49f6-8205-cc9b687c425b&crid=2OAAC1KW40ZWV&cv_ct_cx=deep+groove+ball+bearing&keywords=deep+groove+ball+bearing&pd_rd_i=B08DR617F2&pd_rd_r=f78fcb4a-7ffa-4a6f-9c07-403da8807c19&pd_rd_w=qo7mz&pd_rd_wg=L0UJq&pf_rd_p=5b4ffd46-5d67-49f6-8205-cc9b687c425b&pf_rd_r=RPSWP7MGHK4HNJ28FX7F&qid=1681261523&sbo=RZvfv%2F%2FHxDF%2BO5021pAnSA%3D%3D&sprefix=deep+groove+ball+bearin%2Caps%2C163&sr=1-1-d27bdacb-ad14-3372-97fb-5f5070035007  |
+| Content Cell  | Content Cell  |
+
 ## 1. Generator
 At the heart of this project lies the generator itself, which consists of a magnet and a coil that move relative to each other. There are lots of moving parts to consider, so in order to construct a successful generator, one should know the appropriate optimizations and constraints of electromagnetic generation. To this end, it is important to understand the physical laws which govern such phenomena; below is a brief overview.
 
@@ -97,7 +104,7 @@ How rotor fits into cylinder w/ bearings to stabilize rotation.
 QUICK TEST OF GENERATOR BY TESTING VOLTAGE vs. ANGULAR FREQUENCY -- show graph(s)
 
 ## 2. Circuit
-Most devices powered through USB take a voltage input of 5V DC. This motivated our next goal of converting the AC output from the generator into a usable DC current. We used the circuit pictured consisting of a bridge rectifier, a capacitor, and a voltage regulator.
+Most devices powered through USB take a voltage input of 5V DC. This motivated our next goal of converting the AC output from the generator into a usable DC current. We used the circuit pictured consisting of a bridge rectifier, a capacitor, and a voltage regulator. We used an oscilloscope to collect all of the following scope traces.
 
 ![circuit diagram](https://github.com/ReubenBeeler/Bike-Generator/assets/134644741/14eb47b8-220e-4459-ad16-2f7ab0d1c105)
 

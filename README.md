@@ -17,10 +17,14 @@ The first detail to note about this project is that there are a few crucial, pre
 | [Indoor Bike Stand](https://www.amazon.com/SONGMICS-Indoor-Trainer-Reduces-USBT01B/dp/B07YJLTQRD/ref=sr_1_4?crid=3Q8VMSY8JQ2O5&keywords=turn+bike+into+stationary+bike&qid=1681260447&sprefix=turn+bike+%2Caps%2C177&sr=8-4)  |
 | [Bike Sprocket](https://www.amazon.com/EBIKELING-7-Speed-Bicycle-Freewheel-Cassette/dp/B07C86GR9W/ref=sr_1_1_sspa?crid=1X0FJKQU88P97&keywords=bicycle+gears&qid=1681264320&sprefix=bicycle+gears+%2Caps%2C350&sr=8-1-spons&psc=1&spLa=ZW5jcnlwdGVkUXVhbGlmaWVyPUE5MUc0NzlHMFRSNUkmZW5jcnlwdGVkSWQ9QTA4NzgzMTMxT00ySk83VUk0TTlLJmVuY3J5cHRlZEFkSWQ9QTA1MTE5MTgyOERRT0UySk9ROUFUJndpZGdldE5hbWU9c3BfYXRmJmFjdGlvbj1jbGlja1JlZGlyZWN0JmRvTm90TG9nQ2xpY2s9dHJ1ZQ==)  |
 | [Deep Groove Ball Bearings](https://www.amazon.com/TIMKEN-15x35x11mm-Pre-Lubricated-Performance-Effective/dp/B08DR617F2/ref=sxts_b2b_ccp_search_w_op?content-id=amzn1.sym.5b4ffd46-5d67-49f6-8205-cc9b687c425b%3Aamzn1.sym.5b4ffd46-5d67-49f6-8205-cc9b687c425b&crid=2OAAC1KW40ZWV&cv_ct_cx=deep+groove+ball+bearing&keywords=deep+groove+ball+bearing&pd_rd_i=B08DR617F2&pd_rd_r=f78fcb4a-7ffa-4a6f-9c07-403da8807c19&pd_rd_w=qo7mz&pd_rd_wg=L0UJq&pf_rd_p=5b4ffd46-5d67-49f6-8205-cc9b687c425b&pf_rd_r=RPSWP7MGHK4HNJ28FX7F&qid=1681261523&sbo=RZvfv%2F%2FHxDF%2BO5021pAnSA%3D%3D&sprefix=deep+groove+ball+bearin%2Caps%2C163&sr=1-1-d27bdacb-ad14-3372-97fb-5f5070035007)  |
-| Bridge Rectifiers |
-| |
-| |
-| |
+| [Bridge Rectifier](https://www.amazon.com/Bridgold-KBPC5010-Rectifier-Electronic-Silicon/dp/B07MQ65HLB/ref=sr_1_3?crid=RE6GX8ZWP371&keywords=bridge+rectifier&qid=1686367944&sprefix=bridge+re%2Caps%2C165&sr=8-3) |
+| [Jumper Wire Kit](https://www.amazon.com/dp/B07CJYSL2T?psc=1&ref=ppx_yo2ov_dt_b_product_details)|
+| [Voltage Regulator](https://www.amazon.com/dp/B07T5ZHY63?psc=1&ref=ppx_yo2ov_dt_b_product_details)|
+| [Heat Sink](https://www.amazon.com/dp/B07ZMH4FDW?psc=1&ref=ppx_yo2ov_dt_b_product_details) |
+|Bicycle|
+|Magnet|
+|3D Printer Filament|
+|Desired USB Powered Electronic Device|
 
 
 ## 1. Generator

@@ -114,7 +114,9 @@ Discuss shape of magnet holder + how the magnet fits into the magnet holder (glu
 How rotor fits into cylinder w/ bearings to stabilize rotation.
 
 ### Testing
-QUICK TEST OF GENERATOR BY TESTING VOLTAGE vs. ANGULAR FREQUENCY -- show graph(s)
+In order to test that our generator was working properly, we used a fan to drive the rotor. We tested the voltage amplitudes at different frequencies and compiled their results in the following plot. 
+
+![Voltage vs Frequency](https://github.com/ReubenBeeler/Bike-Generator/assets/110072246/bb5b6303-3169-494d-9645-22d230b48d2d)
 
 ## 2. Circuit
 Most devices powered through USB take a voltage input of 5V DC. This motivated our next goal of converting the AC output from the generator into a usable DC current. We used the circuit pictured consisting of a bridge rectifier, a capacitor, and a voltage regulator. We used an oscilloscope to collect all of the following scope traces.

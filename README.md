@@ -205,20 +205,26 @@ Here is a before-after shot of the cylinder to clarify how the result of the sta
 ![cylinder smaller](https://github.com/ReubenBeeler/Bike-Generator/assets/45247193/9f784b5b-a7a9-4ee0-a42c-8636da196463)
 ![cylinder stat-face bolt smaller](https://github.com/ReubenBeeler/Bike-Generator/assets/45247193/ace6d3d2-54e5-4cef-a427-7add63d45f26)
 
+### Integration Testing!
+The entire generator with the bike attachments is finally complete!
 
-### Final Bike Interface
+![full generator](https://github.com/ReubenBeeler/Bike-Generator/assets/45247193/3c41e6ca-5313-414d-bebd-81f951ff7136)
 
-## Integration Testing!
-Now that our generator is attached to the bike, we should be able to pedal the bike to output electricity. Before implementing the circuit, we get an AC generator output:
+To put the generator on the bike, simply remove the back wheel of the bike and place the bike frame onto the two protruding hex bolts. Screwing on the hex nuts should ensure a tight fit. To ride the bike, prop up the back in whatever way possible! We used an overqualified [bike stand](https://www.amazon.com/SONGMICS-Indoor-Trainer-Reduces-USBT01B/dp/B07YJLTQRD/ref=sr_1_4?crid=3Q8VMSY8JQ2O5&keywords=turn+bike+into+stationary+bike&qid=1681260447&sprefix=turn+bike+%2Caps%2C177&sr=8-4) designed for cyclist training.
+
+The rotor should spin smoothly when turning the pedals. If the rotor wobbles, adjust the location of the hex bolts on the frame. Note that when moving the pedals sufficiently fast, the rotor may come in contact with the cylinder (if not setup properly) and melt either the rotor or the cylinder, which is pretty cool but also something to be weary of! 
+
+Now that our generator is attached to the bike, we should be able to pedal the bike to output electricity. Before connecting the circuit, we get the following AC generator output:
 
 <img width="400" alt="AC" src=https://github.com/ReubenBeeler/Bike-Generator/assets/134644741/576e5a5b-3671-409f-8542-e72fc0257e8f>
 
-In the plot we can clearly see that the voltage is zero before we start pedaling. Once the pedaling begins, the AC voltage output that we see above is produced. Now, we can add in our circuit to get a 5V DC output:
+In the plot, we can clearly see that the voltage is zero before we start pedaling. Once the pedaling begins, the expected AC voltage output is produced. Next, we can add our circuit to obtain a 5V DC output:
 
 <img width="400" alt="DC" src=https://github.com/ReubenBeeler/Bike-Generator/assets/134644741/59ba4717-8bf9-436d-9b07-f1b292506cc5>
 
-Using a multimeter, we measured the current flowing out of this circuit was 0.45A. Using the power relation P = IV,  we have a final power of 2.25 W supplied to the power bank. 
-Now that we finally have all of the elements connected and working as expected, we can ride the bike and charge the power bank. On our power bank, the lights blinking indicates that it is charging.
+Using a multimeter, we measured the current flowing out of this circuit was $0.45\\,\text{A}$. Using the power relation $P = IV$,  we have a final power of $2.25\\,\text{W}$ supplied to the power bank. Note that by adding/changing wire and making a few small modifications, this generator is capable of sustaining much more power output; for the purpose of charging our power bank, however, it turns out that $2\\,\text{W}$ is sufficient.
+
+Now that we finally have all of the elements connected, we can ride the bike and charge the power bank as expected. The blinking lights on the power bank in the bottom-left hand corner of the below video indicate that our power bank is indeed charging.
 
 https://github.com/ReubenBeeler/Bike-Generator/assets/110072246/ba390a81-985c-445b-9bbe-54cf46ee8960
 

@@ -51,7 +51,7 @@ Before building or buying anything (magnets, magnetic wire, 3D print filament, e
 #### Magnet Strength
 It is natural to search for the strongest magnet (or rather the most densely strong magnet since space is an important consideration). A permanent magnet's strength is characterized by its "maximum energy product", which specifies the greatest value of volumetric magnetic-energy density on the surface of the magnet. This is a good metric for characterizing magnetic field strength because volumetric magnet-energy density is a monotonic function with respect to magnetic field strength. Specifically, it is the following:
 
-TODO insert equation for magnetic field density
+![magnetic energy density](https://github.com/ReubenBeeler/Bike-Generator/assets/45247193/ede2ee50-3bde-49a1-ad54-761d73b26df8)
 
 Finding the right magnet can be difficult since there are several strains of magnets on the market! To help navigate the sea of shiny metals, consider the following graph of magnet strength over recent decades from a ScienceDirect article by Mohapatra and Liu:
 
@@ -60,7 +60,7 @@ Finding the right magnet can be difficult since there are several strains of mag
 It is clear that neodymium-iron-boron magnets win the cake with maximum energy products reaching as high as 58 mega-guass-oersted. (The abbreviation for such a neodymium magnet is naturally N58). Unfortunately, such magnets are challenging to get any hands on; the best _accessible_ magnets for DIY projects have strengths around 50 mega-guass-oersted. [Our specific magnet](https://www.amazon.com/gp/product/B07KF61YZT/ref=ppx_yo_dt_b_search_asin_title?ie=UTF8&psc=1) is a cylindrical N52 magnet, which does its job (although is more expensive then essentially identical magnets from other vendors). If you buy multiple N52 magnets together, the first difficulty will be separating them. Slide them apart, don't pull, and **NEVER** bring them back together unless you know what you are doing. These magnets are hazardous!; bringing them together will likely break them in addition to your fingers. Keep them away from computers, hard drives, and electronic devics in general.
 
 #### Magnet-Coil Orientation
-The first optimization we make is maximizing the emf by orienting the magnet and coil such that the magnet or coil rotates around an axis which is perpendicular to both the cylindrical magnet's axis _and_ the axis of the solenoid. Here is a visual supplement to thwart confusion:
+The first optimization we make is maximizing the emf by orienting the magnet and coil such that the axis of rotation is perpendicular to both the cylindrical magnet's axis _and_ the axis of the solenoid. Here is a visual supplement to thwart confusion:
 
 TODO ADD PHOTO OF MAGNET AXIS ALIGNED WITH CYLINDER AXIS, PERPENDICULAR ROTATION AXIS
 
@@ -73,22 +73,24 @@ While cylindrical or rectangular magnets are common, they are not ideal for a ge
 Where in the magnetic field diagram is our cylinder?... Maximizing magnetic flux (and emf, current, etc.) in our generator is achieved by maximizing the enclosed field lines per loop of wire in the coil. For a single loop of wire whose axis of symmetry would appear vertically in the field diagram, it is visually evident that the loop should be placed immediately around the cylinder to enclose the maximum number of field lines. While it is interesting to consider the optimial radius for a loop of wire with some offset along the magnet's axis, the coil will not be sufficiently large to justify further exploration of this topic; the optimal location of the coil given our needs is as close to the magnet as possible.
 
 #### Rotor and Stator
-What spins and what doesn't? An electromagnetic generator simply requires a magnet to move relative to a coil (which is wrapped around a hollow cylinder). In the user's reference frame, the magnet could spin or the coil could spin (or both!). To optimize for simplicity (to avoid the difficulty of wire brushes), the coil and cylinder (called the "stator") are kept stationary relative to the bike while the permanent magnet and "magnet holder" (called the "rotor") rotate inside the coil. To understand what that might look like for our cylindrical magnet, observe the following 3D model of the magnet, a "magnet holder", and the cylinder.
+What spins and what doesn't? An electromagnetic generator simply requires a magnet to move relative to a coil (which is wrapped around a hollow cylinder). In the user's reference frame, the magnet could spin or the coil could spin (or both!). To optimize for simplicity (to avoid the difficulty of wire brushes), the coil and cylinder (called the "stator") are kept stationary relative to the bike while the permanent magnet and "magnet holder" (called the "rotor") rotate inside the coil. To help understand what that might look like for our cylindrical magnet, the standalone rotor (magnet and magnet holder) looks like this:
 
-TODO image of cylinder + rotor
+![Rotor](https://github.com/ReubenBeeler/Bike-Generator/assets/45247193/bebb2583-a3b0-46ee-b6f5-17cd762baddd)
 
-TODO Explain above image more
+The rotor combined with the cylinder looks like this:
+
+![Cylinder Right smaller](https://github.com/ReubenBeeler/Bike-Generator/assets/45247193/b3fad9f1-ee07-44b7-a1b9-4b571594154f) ![Cylinder Front Right smaller](https://github.com/ReubenBeeler/Bike-Generator/assets/45247193/2e1a30e9-bca3-45cd-8ab2-0062c04af4ac)
 
 #### Angular Frequency
 How fast do (should) we spin the magnet? If the magnet is spinning with some constant angular velocity, the magnetic flux would look like
 
-TODO add equation: PHI = PHI_0 sin(OMEGA * t)
+![phi equation](https://github.com/ReubenBeeler/Bike-Generator/assets/45247193/6640e0e0-a0e1-4aa0-8143-8e07678b7a2d)
 
 where $\Phi_0$ is a constant depending on the geometry of the magnet and coil. Using Faraday's Law, we find that
 
-TODO add equation: EMF = OMEGA * PHI_0 sin(OMEGA * t)
+![emf as function of omega](https://github.com/ReubenBeeler/Bike-Generator/assets/45247193/dfc94e76-1942-409a-8e58-390108e62917).
 
-. So, increasing angular frequency of the magnet increases the induced emf, which pushes more current across the load. This is what we desire, yet it is important to note that operating at too high frequencies increases friction between the rotating and stationary parts of the build. This implies the existence of an optimal frequency, yet the constraint of a human turning the magnet with only mild gear reduction makes this optimal frequency beyond reach; an oscillatory frequency of about 5-10Hz is sufficient as we'll see later.
+So, increasing angular frequency of the magnet increases the induced emf, which pushes more current across the load. This is what we desire, yet it is important to note that operating at too high frequencies increases friction between the rotating and stationary parts of the build. This implies the existence of an optimal frequency, yet the constraint of a human turning the magnet with only mild gear reduction makes this optimal frequency beyond reach; an oscillatory frequency of about 5-10Hz is sufficient as we'll see later.
 
 #### Number of Wire Windings
 Consider a solenoid with a variable number of windings. Increasing the number of windings of the solenoid quadratically increases the absolute value of magnetic flux (and its time derivative), thus increasing the absolute value of the induced emf. In general, more wrapped wire provides more electrical generation. However, realistic wires have some resistance! Having an inductor with an enormous amount of wire (relative to the impedance of the load) would be counterproductive since most of the energy would be dissipated by the inductor's resistance. So, there must be some optimal amount of wire to use in the inductor. Unfortunately, due to the complicated nature of the various dissipative forces, it is difficult to predict what exactly that optimum is.

@@ -63,11 +63,10 @@ Finding the right magnet can be difficult since there are several strains of mag
 It is clear that neodymium-iron-boron magnets win the cake with maximum energy products reaching as high as 58 mega-guass-oersted. (The abbreviation for such a neodymium magnet is naturally N58). Unfortunately, such magnets are challenging to get any hands on; the best _accessible_ magnets for DIY projects have strengths around 50 mega-guass-oersted. [Our specific magnet](https://www.amazon.com/gp/product/B07KF61YZT/ref=ppx_yo_dt_b_search_asin_title?ie=UTF8&psc=1) is a cylindrical N52 magnet, which does its job (although is more expensive then essentially identical magnets from other vendors). If you buy multiple N52 magnets together, the first difficulty will be separating them. Slide them apart, don't pull, and **NEVER** bring them back together unless you know what you are doing. These magnets are hazardous!; bringing them together will likely break them in addition to your fingers. Keep them away from computers, hard drives, and electronic devics in general.
 
 #### Magnet-Coil Orientation
-The first optimization we make is maximizing the emf by orienting the magnet and coil such that the axis of rotation is perpendicular to both the cylindrical magnet's axis _and_ the axis of the solenoid. Here is a visual supplement to thwart confusion:
+The first optimization we make is maximizing the emf (change in magnetic flux) by orienting the magnet and coil such that the axis of rotation is perpendicular to both the cylindrical magnet's axis _and_ the axis of the solenoid. Here is a visual supplement to thwart confusion:
 
-TODO ADD PHOTO OF MAGNET AXIS ALIGNED WITH CYLINDER AXIS, PERPENDICULAR ROTATION AXIS
+![Cylinder-Magnet Rotation Axis](https://github.com/ReubenBeeler/Bike-Generator/assets/45247193/9ec30752-0625-4362-b23b-5d389a85ffdb)
 
-TODO Explain above image
 
 #### Magnet Shape
 While cylindrical or rectangular magnets are common, they are not ideal for a generator. Recognizing that the magnet performs circular motion relative to the surrounding coil, the magnet might as well be symmetric around the axis of rotation. Since this axis is perpendicular to the axis of the coil (a circular solenoid), a spherical magnet would utilize this "rotation space" most efficiently. We accordingly recommend that future versions use spherical N52 magnets as opposed to cylindrical N52 magnets. The rest of the project assumes a cylindrical magnet because that is simply what was available at the beginning of our project.

@@ -1,5 +1,5 @@
 # Bike-Generator
-Authors: Reuben Beeler, Audrey O'malley, Cora Constantinescu
+Authors: Reuben Beeler, Audrey O'Malley, Cora Constantinescu
 
 ![Thumbnail](https://github.com/ReubenBeeler/Bike-Generator/assets/45247193/ea010aad-ff79-4312-95a7-4ae29bb19bb4)
 
@@ -23,11 +23,11 @@ If you were to spin the magnet along its cylindrical axis, the magnetic field in
 
 ![faraday's law](https://github.com/ReubenBeeler/Bike-Generator/assets/45247193/d965ffeb-f51c-444d-aed5-78e9c1d4f25a)
 
-We see that the induced voltage (![emf](https://github.com/ReubenBeeler/Bike-Generator/assets/45247193/6ecdb1dc-2a35-4f56-85a4-5c4d269e2d51)) in the conductor is linear to the change in magnetic flux (![magnetic flux](https://github.com/ReubenBeeler/Bike-Generator/assets/45247193/41bcfaa0-aa57-4571-b8d7-55332b00086f)) with respect to time. So, a spinning magnet near a coil/solenoid induces a voltage which drives current through a circuit, thus powering some electronic device. Before we build anything, realize that there are several considerations and optimizations to be made!
+We see that the induced voltage ($\mathcal{E}$) in the conductor is linear to the change in magnetic flux ($\Phi$) with respect to time. So, a spinning magnet near a coil/solenoid induces a voltage which drives current through a circuit, thus powering some electronic device. Note that for a magnet spinning inside a single solenoid, the induced current is _alternating_ current.
 
 ### Optimizations
 
-Before buying magnets, magnetic wire, 3D print filament, etc., it is advised that you read this section thoroughly.
+Before building or buying anything (magnets, magnetic wire, 3D print filament, etc.), realize that there are several considerations and optimizations to be made!
 
 #### Magnet Strength
 It is natural to search for the strongest magnet (or rather the most densely strong magnet since space is an important consideration). A permanent magnet's strength is characterized by its "maximum energy product", which specifies the greatest value of volumetric magnetic-energy density on the surface of the magnet. This is a good metric for characterizing magnetic field strength because volumetric magnet-energy density is a monotonic function with respect to magnetic field strength. Specifically, it is the following:
@@ -48,10 +48,10 @@ TODO ADD PHOTO OF MAGNET AXIS ALIGNED WITH CYLINDER AXIS, PERPENDICULAR ROTATION
 TODO Explain above image
 
 #### Magnet Shape
-While cylindrical or rectangular magnets are common, they are not ideal for a generator. Recognizing that the magnet performs circular motion relative to the surrounding coil, the magnet might as well be symmetric around the axis of rotation. Since this axis is perpendicular to the axis of the coil (a circular solenoid), a spherical magnet would utilize this "rotation space" most efficiently. We accordingly recommend that future versions use spherical N52 magnets as opposed to cylindrical N52 magnets. The rest of the project assumes a cylindrical magnet because that is simply what was available at the beginning of the project.
+While cylindrical or rectangular magnets are common, they are not ideal for a generator. Recognizing that the magnet performs circular motion relative to the surrounding coil, the magnet might as well be symmetric around the axis of rotation. Since this axis is perpendicular to the axis of the coil (a circular solenoid), a spherical magnet would utilize this "rotation space" most efficiently. We accordingly recommend that future versions use spherical N52 magnets as opposed to cylindrical N52 magnets. The rest of the project assumes a cylindrical magnet because that is simply what was available at the beginning of our project.
 
 #### Proximity of Coil
-Where in the magnetic field diagram is our cylinder? The magnetic field strength in the above field diagram (for a cylindrical magnet) is characterized by the density of magnetic field lines. Maximizing magnetic flux in our generator requires enclosing the maximum amount of field lines TODO
+Where in the magnetic field diagram is our cylinder?... Maximizing magnetic flux (and emf, current, etc.) in our generator is achieved by maximizing the enclosed field lines per loop of wire in the coil. For a single loop of wire whose axis of symmetry would appear vertically in the field diagram, it is visually evident that the loop should be placed immediately around the cylinder to enclose the maximum number of field lines. While it is interesting to consider the optimial radius for a loop of wire with some offset along the magnet's axis, the coil will not be sufficiently large to justify further exploration of this topic; the optimal location of the coil given our needs is as close to the magnet as possible.
 
 #### Rotor and Stator
 What spins and what doesn't? An electromagnetic generator simply requires a magnet to move relative to a coil. In the user's reference frame, the magnet could spin or the coil could spin (or both!). To optimize for simplicity (to avoid the difficulty of wire brushes), the coil is kept stationary relative to the bike while the permanent magnet rotates inside the coil. To maintain this rotation, we should encapsulate the magnet in some sort of contain which we can rotate inside of the cylinder. To understand what that might look like for our cylindrical magnet, observe the following 3D model of the magnet, a "magnet holder", and the cylinder around which a coil would be wrapped.
@@ -75,9 +75,12 @@ TODO add equation: EMF = OMEGA * PHI_0 sin(OMEGA * t)
 Consider a solenoid with a variable number of windings. Increasing the number of windings of the solenoid quadratically increases the absolute value of magnetic flux (and its time derivative), thus increasing the absolute value of the induced emf. In general, more wrapped wire provides more electrical generation. However, realistic wires have some resistance! Having an inductor with an enormous amount of wire (relative to the impedance of the load) would be counterproductive since most of the energy would be dissipated by the inductor's resistance. So, there must be some optimal amount of wire to use in the inductor. Unfortunately, due to the complicated nature of the various dissipative forces, it is difficult to predict what exactly that optimum is.
 
 #### Wire Size
-Which size of wire should you pick for the coil? We chose a 30 AWG copper wire... TODO complete this Knowing that we use copper wire, spin the magnet with a frequency
+Which size of wire should you pick for the coil?... We use copper wire as it is a good, cheap conductor. Knowing the resistivity of copper wire and the expected impedance of the load (about $5\\,\text{k}\Omega$), we calculated an optimal wire gauge of about 35 AWG. This calculation maximized inductance of the solenoid over resistance of our circuit while keeping constant the volume of space filled by the wire of the solenoid (since magnetic field drops off quickly). This was a crude sort of calculation but was enough to support an argument for a very thin wire... so thin that the 35 AWG wire is difficult to handle without breaking, so we resorted to using a [CMS Magnetics 30 AWG wire](https://www.amazon.com/gp/product/B07XPS2MSM/ref=ppx_yo_dt_b_search_asin_title?ie=UTF8&th=1) for the solenoid.
+
+**After completing the project:** In hindsight, a thicker wire (around 25 AWG) would have been a better choice for allowing more current without overheating and over-resisting; our magnetic wire was rated for $0.2\\,\text{A}$, which was easily exceeded. With the voltage regulation of $5\\,\text{V}$ for USB charging, the output power was limited to the order of a watt. Definitely experi
 
 #### Wire Insulation
+Typically, wires are insulated using a flexible variant of PVC
 TODO COIL specs -- radius, _magnetic_ wire (enameled coating rather than PVC)
 Enameled wire is harder to strip --  easiest with sandpaper or scraping with scissors but alternative methods exist like chemical bath.
 
@@ -125,3 +128,5 @@ The power bank did not charge at first. Connecting it to the circuit altered the
 ## 3. Bike Interface
 
 ## Integration Testing!
+
+

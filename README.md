@@ -128,5 +128,18 @@ The power bank did not charge at first. Connecting it to the circuit altered the
 ## 3. Bike Interface
 
 ## Integration Testing!
+Now that our generator is attached to the bike, we should be able to pedal the bike to output electricity. Before implementing the circuit, we get an AC generator output:
+
+![AC](https://github.com/ReubenBeeler/Bike-Generator/assets/134644741/576e5a5b-3671-409f-8542-e72fc0257e8f)
+
+In the plot we can clearly see that the voltage is zero before we start pedaling. Once the pedaling begins, the AC voltage output that we see above is produced. Now, we can add in our circuit to get a 5V DC output:
+
+![DC](https://github.com/ReubenBeeler/Bike-Generator/assets/134644741/59ba4717-8bf9-436d-9b07-f1b292506cc5)
+
+Using a multimeter, we measured the current flowing out of this circuit was 0.45A. Using the power relation P = IV,  we have a final power of 2.25 W supplied to the power bank. 
+Now that we finally have all of the elements connected and working as expected, we can ride the bike and charge the power bank. On our power bank, the lights blinking indicates that it is charging.
+
+INSERT VID HERE
 
 
+To achieve this constant charging, we needed to pedal at a constant speed. We had to pedal somewhat quickly (about 100 rpm) but not impossibly fast, as shown in the video. 

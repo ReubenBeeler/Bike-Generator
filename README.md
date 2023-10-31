@@ -1,3 +1,5 @@
+View this README in light-mode for best results. Dark-mode is currently unsupported...
+
 # Bike-Generator
 Authors: Reuben Beeler, Audrey O'Malley, Cora Constantinescu
 

@@ -1,4 +1,4 @@
-View this README in light-mode for best results. Dark-mode is currently unsupported...
+View this README in light-mode for best results.
 
 # Bike-Generator
 Authors: Reuben Beeler, Audrey O'Malley, Cora Constantinescu
@@ -45,7 +45,7 @@ Permanent magnets have a permanent magnetic field. For a cylindrical magnet pola
 If you were to spin the magnet along its cylindrical axis, the magnetic field in 3D space would be unchanged since that axis is the axis of symmetry. If, however, you were to spin the magnet on another axis, the direction and magnitude of the field at a particular point would change as a function of time. If, perchance, this changing magnetic field penetrates a conducting material or loop of wire, the conductor will experience an induced emf characterized by Faraday's Law (equation below).
 
 
-![faraday's law](https://github.com/ReubenBeeler/Bike-Generator/assets/45247193/d965ffeb-f51c-444d-aed5-78e9c1d4f25a)
+![Faraday's law](https://github.com/ReubenBeeler/Bike-Generator/assets/45247193/f2302e99-7201-4eea-bf75-18e710c6815b)
 
 We see that the induced voltage ($\mathcal{E}$) in the conductor is linear to the change in magnetic flux ($\Phi$) with respect to time. So, a spinning magnet near a coil/solenoid induces a voltage which drives current through a circuit, thus powering some electronic device. Note that for a magnet spinning inside a single solenoid, the induced current is _alternating_ current.
 
@@ -56,7 +56,7 @@ Before building or buying anything (magnets, magnetic wire, 3D print filament, e
 #### Magnet Strength
 It is natural to search for the strongest magnet (or rather the most densely strong magnet since space is an important consideration). A permanent magnet's strength is characterized by its "maximum energy product", which specifies the greatest value of volumetric magnetic-energy density on the surface of the magnet. This is a good metric for characterizing magnetic field strength because volumetric magnet-energy density is a monotonic function with respect to magnetic field strength. Specifically, it is the following:
 
-![magnetic energy density](https://github.com/ReubenBeeler/Bike-Generator/assets/45247193/ede2ee50-3bde-49a1-ad54-761d73b26df8)
+![magnetic energy density](https://github.com/ReubenBeeler/Bike-Generator/assets/45247193/2d41e40c-8120-4198-8527-2ba5b72bda8a)
 
 Finding the right magnet can be difficult since there are several strains of magnets on the market! To help navigate the sea of shiny metals, consider the following graph of magnet strength over recent decades from a ScienceDirect article by Mohapatra and Liu:
 
@@ -67,8 +67,7 @@ It is clear that neodymium-iron-boron magnets win the cake with maximum energy p
 #### Magnet-Coil Orientation
 The first optimization we make is maximizing the emf (change in magnetic flux) by orienting the magnet and coil such that the axis of rotation is perpendicular to both the cylindrical magnet's axis _and_ the axis of the solenoid. Here is a visual supplement to thwart confusion:
 
-![Cylinder-Magnet Rotation Axis](https://github.com/ReubenBeeler/Bike-Generator/assets/45247193/9ec30752-0625-4362-b23b-5d389a85ffdb)
-
+![Cylinder-Magnet Rotation Axis](https://github.com/ReubenBeeler/Bike-Generator/assets/45247193/ba30fcff-b8dc-4b26-bdd2-0c8897f67ef4)
 
 #### Magnet Shape
 While cylindrical or rectangular magnets are common, they are not ideal for a generator. Recognizing that the magnet performs circular motion relative to the surrounding coil, the magnet might as well be symmetric around the axis of rotation. Since this axis is perpendicular to the axis of the coil (a circular solenoid), a spherical magnet would utilize this "rotation space" most efficiently. We accordingly recommend that future versions use spherical N52 magnets as opposed to cylindrical N52 magnets. The rest of the project assumes a cylindrical magnet because that is simply what was available at the beginning of our project.
@@ -79,21 +78,21 @@ Where in the magnetic field diagram is our cylinder?... Maximizing magnetic flux
 #### Rotor and Stator
 What spins and what doesn't? An electromagnetic generator simply requires a magnet to move relative to a coil (which is wrapped around a hollow cylinder). In the user's reference frame, the magnet could spin or the coil could spin (or both!). To optimize for simplicity (to avoid the difficulty of wire brushes), the coil and cylinder (called the "stator") are kept stationary relative to the bike while the permanent magnet and "magnet holder" (called the "rotor") rotate inside the coil. To help understand what that might look like for our cylindrical magnet, the standalone rotor (magnet and magnet holder) looks like this:
 
-![Rotor](https://github.com/ReubenBeeler/Bike-Generator/assets/45247193/bebb2583-a3b0-46ee-b6f5-17cd762baddd)
+![Rotor](https://github.com/ReubenBeeler/Bike-Generator/assets/45247193/4e0d0b35-5494-42e8-a051-dbd0821c4e6d)
 
 The rotor combined with the cylinder looks like this:
 
-![Cylinder Right smaller](https://github.com/ReubenBeeler/Bike-Generator/assets/45247193/b3fad9f1-ee07-44b7-a1b9-4b571594154f)
-![Cylinder Front Right smaller](https://github.com/ReubenBeeler/Bike-Generator/assets/45247193/2e1a30e9-bca3-45cd-8ab2-0062c04af4ac)
+![Cylinder Right smaller](https://github.com/ReubenBeeler/Bike-Generator/assets/45247193/c5b4dd40-78a1-46f1-a837-df1e51105b65)
+![Cylinder Front Right smaller](https://github.com/ReubenBeeler/Bike-Generator/assets/45247193/1c116fbc-ac2c-4706-ab21-489a8e2f647f)
 
 #### Angular Frequency
 How fast do (should) we spin the magnet? If the magnet is spinning with some constant angular velocity, the magnetic flux would look like
 
-![phi equation](https://github.com/ReubenBeeler/Bike-Generator/assets/45247193/6640e0e0-a0e1-4aa0-8143-8e07678b7a2d)
+![phi equation](https://github.com/ReubenBeeler/Bike-Generator/assets/45247193/617fcc58-9d9d-4b6c-b9eb-b071cd0e5b8d)
 
 where $\Phi_0$ is a constant depending on the geometry of the magnet and coil. Using Faraday's Law, we find that
 
-![emf as function of omega](https://github.com/ReubenBeeler/Bike-Generator/assets/45247193/dfc94e76-1942-409a-8e58-390108e62917).
+![emf as function of omega](https://github.com/ReubenBeeler/Bike-Generator/assets/45247193/4bc19276-617b-4ed0-a1dd-e7697ee37089)
 
 So, increasing angular frequency of the magnet increases the induced emf, which pushes more current across the load. This is what we desire, yet it is important to note that operating at too high frequencies increases friction between the rotating and stationary parts of the build. This implies the existence of an optimal frequency, yet the constraint of a human turning the magnet with only mild gear reduction makes this optimal frequency beyond reach; an oscillatory frequency of about 5-10Hz is sufficient as we'll see later.
 
@@ -116,8 +115,8 @@ We did experiment with TPU, as it is a flexible and more durable alternative to 
 ### Building
 Given the above information, the design of the generator follows accordingly. The magnet holder slides through a slit in the cylinder, after which the magnet may be inserted. The magnet holder, as depicted above in the Rotor and Stator section, fits around our magnet snugly without the need of an adhesive. In order to stabilize the rotation of the rotor, we use two 608Z ball bearings ($8\\,\text{mm}$ inner radius, $22\\,\text{mm}$ outer radius, $7\\,\text{mm}$ height), one on each side of the rotor. The outside of the bearings are stationary with the cylinder and fit snugly into the two circular slots, while the inside of the bearing rotates with the rotor. The bearings (depicted as gray disks) are visualized below: top view is on left, bottom view is on right.
 
-![Bearing and Nut 1](https://github.com/ReubenBeeler/Bike-Generator/assets/45247193/932c66b5-1ebd-48c1-9e68-b1fc2e1a5198)
-![Bearing and Nut 2](https://github.com/ReubenBeeler/Bike-Generator/assets/45247193/a26986b0-9b96-4cd8-a137-60839687a248)
+![Bearing and Nut 1](https://github.com/ReubenBeeler/Bike-Generator/assets/45247193/3e55df0b-5ab6-4e29-ba10-633db7210ccd)
+![Bearing and Nut 2](https://github.com/ReubenBeeler/Bike-Generator/assets/45247193/7e76430d-a839-4b13-a214-37f87c0af9e4)
 
 In the above pictures, two 3D-printed nuts (in black) keep the rotor in the correct vertical alignment. Without such nuts, the magnet is attracted to one bearing or the other, pulling the rotor far enough to one side that it collides with the inside of the cylinder.
 
@@ -125,7 +124,7 @@ The next obvious step is to create the coil, which should be wrapped as close to
 
 Finally, we should test the generator, which requires a method of rotating the rotor. A simple hand-crank is a practical solution for testing and debugging. The provided hand-crank in this repository is essentially an extension of a nut which screws onto the longer threaded side of the rotor as seen below.
 
-![Cylinder Hand Crank Interface](https://github.com/ReubenBeeler/Bike-Generator/assets/45247193/99bd367e-a16f-40d7-bc46-134ba0130c72)
+![Cylinder Hand Crank Interface](https://github.com/ReubenBeeler/Bike-Generator/assets/45247193/ae20f559-c551-48b9-bfd4-ba9fdf50f4d7)
 
 ### Testing
 In order to test that our generator was working properly, we used both a fan motor and a hand crank to drive the rotor. An oscilloscope trace of the output is below.
@@ -176,40 +175,40 @@ Recall the main goal of the project... generating power with a _bike_. Attaching
 ### Rotating Interface
 The gears (which have built-in ball bearings) should rest on a stationary 2.5-inch long, galvanized hex bolt. This bolt will be fastened to the chain-side of the bike using a galvanized hex nut. However, the bolt doesn't just magically fit into the gears; the design for the gear interface with the bolt consists of two 3D-printed parts (shown below). The left piece fits snugly around the head of the bolt, while the right one fits somewhat loosely on top of the gear. A tight fit for the latter piece is not needed as it will be kept in place from lateral pressure when placed on the bike. It also serves as a spacer between the frame and gears; feel free to adjust its width to match the hub and gear spacing on your particular bike.
 
-![bolt smaller](https://github.com/ReubenBeeler/Bike-Generator/assets/45247193/499b398c-acca-442b-958a-fd836c1dd889)
-![gear smaller](https://github.com/ReubenBeeler/Bike-Generator/assets/45247193/1517d25d-ab69-4b82-86bd-1c36fd44b64d)
+![bolt smaller](https://github.com/ReubenBeeler/Bike-Generator/assets/45247193/dadb477e-90a0-47e7-a813-bb0053980214)
+![gear smaller](https://github.com/ReubenBeeler/Bike-Generator/assets/45247193/35f8442c-ad3d-4bd0-bc96-7f62a41e9386)
 
 Putting the bolt and gears together, it should look something like this:
 
-![gear face smaller](https://github.com/ReubenBeeler/Bike-Generator/assets/45247193/c741f019-14be-4058-9b2c-522cf6cad680)
-![gear and bolt smaller](https://github.com/ReubenBeeler/Bike-Generator/assets/45247193/fb8fdc95-00c4-48dd-9d7e-39c62ace15ce)
+![gear face smaller](https://github.com/ReubenBeeler/Bike-Generator/assets/45247193/9c045875-7bde-4639-8869-e92a159bedb9)
+![gear and bolt smaller](https://github.com/ReubenBeeler/Bike-Generator/assets/45247193/0b87a1fb-f378-45c6-83e3-48f60d0a2347)
 
 Once that is done, the gear will need to interface with the rotor. Conveniently, there is a set of 6 regular hole patterns in the gears. We capitalize on this by creating an attachment to the rotor (similar to the hand-crank), which we call "gear fingers". The gear fingers have 6 protrusions "fingers" which snugly fit into the 6 holes of the gears. At the center of the gear fingers lies a threaded hole which screws onto the longer side of the rotor, just next to the 3D-printed nut. The next two images show the gear fingers attached to the rotor. Note the bearing, which is just next to the threaded section of the magnet holder. Note also that the 3D-printed nut (which would be inbetween the gear fingers and the bearing) is not present in this photo. (During the process of debugging, you may find that the nuts are not necessary or that only one nut is needed).
 
-![gears rotor 1 smaller](https://github.com/ReubenBeeler/Bike-Generator/assets/45247193/7cae87d2-4b62-4338-b7b8-738d73bc504d)
-![gears rotor 2 smaller](https://github.com/ReubenBeeler/Bike-Generator/assets/45247193/6ad5b30c-9f97-4478-8897-93be4a75c2f0)
+![gears rotor 1 smaller](https://github.com/ReubenBeeler/Bike-Generator/assets/45247193/fdf8ca22-5f37-4125-ba7a-4eee51d07286)
+![gears rotor 2 smaller](https://github.com/ReubenBeeler/Bike-Generator/assets/45247193/44c5cf1c-59ff-4378-844c-a80f1197dbd5)
 
 Finally, ensure that the gear fingers fulfill their requirement of fitting snugly into the gears. They should look like this:
 
-![gears fingers rotor smaller](https://github.com/ReubenBeeler/Bike-Generator/assets/45247193/94569acc-653b-4ee8-8a50-85a2064542b5)
+![gears fingers rotor smaller](https://github.com/ReubenBeeler/Bike-Generator/assets/45247193/fc3280ba-e9ae-4b1c-9c77-85587d77470a)
 
 The galvanized hex bolt from before is not shown in this photo. When attaching the generator to the bike, the gear fingers will cover the head side of the hex bolt while the tail end will attach to the bike frame.
 
 ### Stationary Interface
 The stationary interface has no moving parts and is consequently a little more straightforward. The cylinder interfaces with the bike using a hex bolt & nut and a single 3D-printed part. The threaded part of the cylinder screws into this 3D-printed interface, which holds in place the 1-inch galvanized hex bolt in a fashion similar to the previous section. The 3D-printed piece appears below.
 
-![stat-face smaller](https://github.com/ReubenBeeler/Bike-Generator/assets/45247193/426f4712-6443-48b8-a197-2d59e8a13268)
-![stat-face bolt smaller](https://github.com/ReubenBeeler/Bike-Generator/assets/45247193/d24b1702-0539-42d6-ab4c-e01c87d26425)
+![stat-face smaller](https://github.com/ReubenBeeler/Bike-Generator/assets/45247193/9b2c34ca-bd43-48e8-94e9-64620137bd0b)
+![stat-face bolt smaller](https://github.com/ReubenBeeler/Bike-Generator/assets/45247193/b1109cb6-d060-4bba-acca-9f6f40a2d5a2)
 
 Here is a before-after shot of the cylinder to clarify how the result of the stationary interface should look.
 
-![cylinder smaller](https://github.com/ReubenBeeler/Bike-Generator/assets/45247193/9f784b5b-a7a9-4ee0-a42c-8636da196463)
-![cylinder stat-face bolt smaller](https://github.com/ReubenBeeler/Bike-Generator/assets/45247193/ace6d3d2-54e5-4cef-a427-7add63d45f26)
+![cylinder smaller](https://github.com/ReubenBeeler/Bike-Generator/assets/45247193/d06bfbe5-07ed-4441-9a65-986cb4fae261)
+![cylinder stat-face bolt smaller](https://github.com/ReubenBeeler/Bike-Generator/assets/45247193/900d82c6-ca57-4f77-9cdb-2fe10f1ce2e3)
 
 ### Integration Testing!
 The entire generator with the bike attachments is finally complete!
 
-![full generator](https://github.com/ReubenBeeler/Bike-Generator/assets/45247193/3c41e6ca-5313-414d-bebd-81f951ff7136)
+![full generator](https://github.com/ReubenBeeler/Bike-Generator/assets/45247193/072f5a56-2d52-425a-a607-23a13a09a722)
 
 To put the generator on the bike, simply remove the back wheel of the bike and place the bike frame onto the two protruding hex bolts. Screwing on the hex nuts should ensure a tight fit. To ride the bike, prop up the back in whatever way possible! We used an overqualified [bike stand](https://www.amazon.com/SONGMICS-Indoor-Trainer-Reduces-USBT01B/dp/B07YJLTQRD/ref=sr_1_4?crid=3Q8VMSY8JQ2O5&keywords=turn+bike+into+stationary+bike&qid=1681260447&sprefix=turn+bike+%2Caps%2C177&sr=8-4) designed for cyclist training.
 
